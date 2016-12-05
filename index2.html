@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS 2 Simplest ToDo app</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap-flex.min.css">
+    <style>
+      #todo-list-example{
+        top:55%;
+        left: 50%;
+        transform: translate3d(-50%,-50%, 0);
+        position: absolute;
+      }
+    </style>
+</head>
+<body>
+  <div id="todo-list-example">
+  <input
+    v-model="newTodoText"
+    v-on:keyup.enter="todos.push(newTodoText)"
+    placeholder="Add a todo"
+  >
+  <button v-on:click="todos.push(newTodoText)">add</button>
+  <hr>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Task</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(todo, index) in todos">
+        <td>{{index+1}}</td>
+        <td>{{todo}}</td>
+        <td><button v-on:click="todos.splice(index, 1)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="script2.js"></script>
+</body>
+</html>
